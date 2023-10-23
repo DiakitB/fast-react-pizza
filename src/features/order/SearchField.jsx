@@ -13,8 +13,11 @@ function SearchField() {
   return (
     <form onSubmit={onsubmitHandler}>
       <input
+        className="focus: rounded-full px-3 py-2
+         text-sm outline-none placeholder:text-stone-800 
+         focus:ring sm:focus:w-72"
         type="text"
-        placeholder="type the ID#"
+        placeholder="Search order #"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
