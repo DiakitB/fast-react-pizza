@@ -1,8 +1,8 @@
-import { useState } from "react";
-import Button from "../ui/Button";
+import { useState } from 'react';
+import Button from '../ui/Button';
 
 function CreateUser() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,9 +20,9 @@ function CreateUser() {
         onChange={(e) => setUsername(e.target.value)}
       />
 
-      {username !== "" && (
+      {username !== '' && (
         <div className="mt-5">
-          <Button>Start ordering</Button>
+          <Button type="primary">Start ordering</Button>
         </div>
       )}
     </form>
