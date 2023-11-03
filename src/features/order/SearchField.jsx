@@ -1,14 +1,15 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SearchField() {
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
   function onsubmitHandler(e) {
     e.preventDefault();
-    if (e.target.value) return;
+    if (!query) return;
     navigate(`/order/${query}`);
+    setQuery('');
   }
   return (
     <form onSubmit={onsubmitHandler}>
