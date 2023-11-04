@@ -34,7 +34,7 @@ const fakeCart = [
 ];
 
 function CreateOrder() {
-  // const [withPriority, setWithPriority] = useState(false);
+  const [withPriority, setWithPriority] = useState(false);
   const fromError = useActionData();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -77,8 +77,8 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
-            // value={withPriority}
-            // onChange={(e) => setWithPriority(e.target.checked)}
+            value={withPriority}
+            onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label htmlFor="priority">Want to yo give your order priority?</label>
         </div>
@@ -86,7 +86,7 @@ function CreateOrder() {
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <Button disabled={isSubmitting} type="primary">
-            {isSubmitting ? 'Placing order...' : 'Place order'}
+            {isSubmitting ? 'Placing order...' : 'Order now'}
           </Button>
         </div>
       </Form>
@@ -97,22 +97,24 @@ function CreateOrder() {
 // ACTION FUNCTION WITH REDIRECT ACTION
 export async function action({ request }) {
   const formData = await request.formData();
+  console.log(formData);
   const data = Object.fromEntries(formData);
-  console.log(data);
+
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
     priority: data.priority === 'on',
   };
+
   const errors = {};
   if (!isValidPhone(order.phone))
     errors.phone =
       'Please give us your correct phone number. We might need it to contact you.';
   if (Object.keys(errors).length > 0) return errors;
   // console.log(order);
-  // const newOrder = await createOrder(order);
+  const newOrder = await createOrder(order);
 
-  // return redirect(`/order/${newOrder.id}`);
+  return redirect(`/order/${newOrder.id}`);
   return null;
 }
 export default CreateOrder;

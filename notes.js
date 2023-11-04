@@ -17,3 +17,34 @@
 //// EXP: sm: w-20
 
 //// Using Flex box
+
+/// we can use react Form element which allows us to get all the data from the form in our action function
+/// by accessing the request object in our form. in our action function
+/// we then conver that data into an object
+// we can also add any data to our form that we can acces in the request object
+// Exple:
+///
+// export async function action({ request }) {
+//   console.log(request);
+//   const formData = await request.formData();
+//   console.log(formData);
+//   const data = Object.fromEntries(formData);
+//   console.log(data);
+//   const order = {
+//     ...data,
+//     cart: JSON.parse(data.cart),
+//     priority: data.priority === 'on',
+//   };
+//   const errors = {};
+//   if (!isValidPhone(order.phone))
+//     errors.phone =
+//       'Please give us your correct phone number. We might need it to contact you.';
+//   if (Object.keys(errors).length > 0) return errors;
+//   // console.log(order);
+//   // const newOrder = await createOrder(order);
+
+//   // return redirect(`/order/${newOrder.id}`);
+//   return null;
+// }
+
+///
