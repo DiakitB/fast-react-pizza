@@ -5,11 +5,11 @@ import Username from '../user/Username';
 function Header() {
   return (
     <header
-      className="boder-storne-500 bg-mycolor
-     flex items-center 
-     justify-between border-b-8 px-4 py-3 uppercase sm:px-6"
+      className="boder-storne-500 flex
+     items-center justify-between 
+     border-b-8 bg-mycolor px-4 py-3 uppercase sm:px-6"
     >
-      <Link to="/" className="tracking-widest">
+      <Link to="/" className="tracking-widest text-orange-600">
         Fast React Pizza Co.
       </Link>
       <SearchField />
