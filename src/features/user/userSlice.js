@@ -23,7 +23,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // }
 
 const initialState = {
-  username: 'Ousmane',
+  username: '',
 };
 
 const userSlice = createSlice({
@@ -35,7 +35,6 @@ const userSlice = createSlice({
     },
   },
 });
-console.log(userSlice.reducer);
 
 export const { upadateName } = userSlice.actions;
 export default userSlice.reducer;
