@@ -30,7 +30,9 @@ function Cart() {
       </ul>
 
       <div className="mt-5 space-x-3">
-        <Button to="/order/new">Order pizzas</Button>
+        <Button to="/order/new" type="primary">
+          Order pizzas
+        </Button>
         {/* <Link to="/order/new">Order pizzas</Link> */}
         <button
           className="inlie-block focus:bg-sky-30 uppercas rounded-full bg-red-500 

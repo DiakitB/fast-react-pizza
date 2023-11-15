@@ -1,9 +1,10 @@
 // Test ID: IIDSAT
 
 import { useLoaderData } from 'react-router-dom';
-import { calcMinutesLeft, formatCurrency, formatDate } from '../utils/helpers';
+
 import { getOrder } from '../services/apiRestaurant';
 import OrderItem from '../order/OrderItem';
+import { calcMinutesLeft, formatCurrency, formatDate } from '../utils/helpers';
 // const order = {
 //   id: 'ABCDEF',
 //   customer: 'Jonas',
@@ -57,7 +58,7 @@ function Order() {
   return (
     <div className="space-y-8 px-4 py-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-xl font-semibold">Ored # {id} status</h2>
+        <h2 className="text-xl font-semibold">Order #{id} status</h2>
 
         <div className="space-x-2">
           {priority && (
@@ -72,7 +73,7 @@ function Order() {
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-2 bg-stone-200 px-6 py-5">
-        <p className="font-md">
+        <p className="font-medium">
           {deliveryIn >= 0
             ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
             : 'Order should have arrived'}
@@ -81,11 +82,12 @@ function Order() {
           (Estimated delivery: {formatDate(estimatedDelivery)})
         </p>
       </div>
-      {/* <ul>
+
+      <ul className="dive-stone-200 divide-y border-b border-t">
         {cart.map((item) => (
-          <OrderItem item={item} key={item.id} />
+          <OrderItem item={item} key={item.key} />
         ))}
-      </ul> */}
+      </ul>
 
       <div className="space-y-2 bg-stone-200 px-6 py-5">
         <p className="text-sm font-medium text-stone-600">
@@ -103,6 +105,7 @@ function Order() {
     </div>
   );
 }
+
 export async function loader({ params }) {
   console.log(params);
   const order = await getOrder(params.orderId);
