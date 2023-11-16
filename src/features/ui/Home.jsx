@@ -20,7 +20,9 @@ function Home() {
       {username == '' ? (
         <CreateUser />
       ) : (
-        <Button to="/menu">Continu ordering</Button>
+        <Button type="round" to="/menu">
+          Continu ordering
+        </Button>
       )}
     </div>
   );
